@@ -27,9 +27,19 @@ class DB_Operations {
     const sql = "DELETE FROM KV WHERE ttl <= NOW()";
 
     this.db.query(sql, (error, results) => {
-        if(error) throw error;
-        console.log(results);
-    })
+      if (error) throw error;
+      console.log(results);
+    });
+  }
+
+  get(key) {
+    const sql = "SELECT * FROM KV WHERE `key` = ? AND ttl > NOW()";
+    const params = [key];
+
+    this.db.query(sql, params, (error, results) => {
+      if (error) throw error;
+      console.log(results);
+    });
   }
 }
 
