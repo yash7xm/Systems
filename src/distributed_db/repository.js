@@ -22,6 +22,15 @@ class DB_Operations {
       console.log(results);
     });
   }
+
+  deleteExpired() {
+    const sql = "DELETE FROM KV WHERE ttl <= NOW()";
+
+    this.db.query(sql, (error, results) => {
+        if(error) throw error;
+        console.log(results);
+    })
+  }
 }
 
 module.exports = DB_Operations;
