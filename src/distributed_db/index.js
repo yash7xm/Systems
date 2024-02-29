@@ -1,10 +1,9 @@
 const express = require("express");
 
-const config = require("./config");
-const {connection1, connection2} = require("./connections");
+const config = require("./db_config");
+const { connection1, connection2 } = require("./connections");
 
 const app = express();
-
 
 connection1.connect((error) => {
   if (error) {
