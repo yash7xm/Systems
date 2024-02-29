@@ -38,6 +38,19 @@ app.post("/insert", (req, res) => {
   res.sendStatus(200);
 });
 
+app.delete("/", (req, res) => {
+  const { key } = req.body;
+
+  if (key[0] == "G") {
+    const db_op = new DB_Operations(connection1);
+    db_op.delete(key);
+  } else if (key[0] == "M") {
+    const db_op = new DB_Operations(connection2);
+    db_op.delete(key);
+  }
+  res.sendStatus(200);
+});
+
 app.listen(config.SERVER_PORT, () => {
   console.log(`server running on ${config.SERVER_PORT}`);
 });

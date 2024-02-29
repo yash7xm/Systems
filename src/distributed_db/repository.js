@@ -12,6 +12,16 @@ class DB_Operations {
       console.log(results);
     });
   }
+
+  delete(key) {
+    const sql = "UPDATE KV SET ttl = NULL WHERE `key` = ? AND ttl > NOW()";
+    const params = [key];
+
+    this.db.query(sql, params, (error, results, fields) => {
+      if (error) throw error;
+      console.log(results);
+    });
+  }
 }
 
 module.exports = DB_Operations;
