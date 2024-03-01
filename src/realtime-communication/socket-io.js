@@ -21,11 +21,18 @@ io.on("connection", (socket) => {
     io.emit("chat message", msg);
   });
 
-  socket.emit("yash", {name: "Yash Poonia"});
+  socket.emit("yash", { name: "Yash Poonia" });
 
   socket.on("from client", (msg) => {
     io.emit("from client", msg);
-  })
+  });
+
+  socket.on("ack", (arg, callback) => {
+    console.log(arg);
+    callback({
+      status: "ok",
+    });
+  });
 });
 
 server.listen(3000, () => {

@@ -100,6 +100,14 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       })
+
+      socket.timeout(5000).emit('ack', "send ack", (err, res) => {
+        if(err) {
+            console.log('did not send ack')
+        } else {
+            console.log(res.status);
+        }
+      });
     </script>
   </body>
 </html>
