@@ -33,6 +33,11 @@ io.on("connection", (socket) => {
       status: "ok",
     });
   });
+
+  socket.onAny((eventName, ...args) => {
+    console.log(eventName);
+    console.log(args);
+  });
 });
 
 server.listen(3000, () => {
