@@ -38,6 +38,10 @@ io.on("connection", (socket) => {
     console.log(eventName);
     console.log(args);
   });
+
+  socket.join("room 1");
+
+  io.to('room 1').emit("room", "room connected");
 });
 
 server.listen(3000, () => {
