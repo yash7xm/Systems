@@ -84,6 +84,22 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
+
+      socket.on('yash', (arg) => {
+        const item = document.createElement("li");
+        item.textContent = JSON.stringify(arg.name);
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      })
+
+      socket.emit("from client", "yo");
+
+      socket.on("from client", (arg) => {
+        const item = document.createElement("li");
+        item.textContent = JSON.stringify(arg);
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      })
     </script>
   </body>
 </html>

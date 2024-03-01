@@ -20,6 +20,12 @@ io.on("connection", (socket) => {
     console.log("message: " + msg);
     io.emit("chat message", msg);
   });
+
+  socket.emit("yash", {name: "Yash Poonia"});
+
+  socket.on("from client", (msg) => {
+    io.emit("from client", msg);
+  })
 });
 
 server.listen(3000, () => {
